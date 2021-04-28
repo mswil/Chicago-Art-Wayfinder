@@ -4,31 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Chicago Art Wayfinder</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/stylesheet.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>    
     <script src="./assets/js/main.js" defer></script>
+
 </head>
 <body>
-    <header>
-        <h1>Header</h1>
-    </header>
+    <nav class="purple darken-2">      
+        
+        <div class="nav-wrapper container">
+                <!-- Art Wayfinder -->
+            <a href="index.html" class="brand-logo"><i class="material-icons">palette</i>Art Wayfinder</a>
+                    <!-- Nav Menu-->
+                <ul class="right hide-on-med-and-down">
+                    <li class="active"><a href="index.html">Gallery</a></li>
+                    <li><a href="https://www.artic.edu/" target="_blank">Art Institvte Chicago</a></li>
+                    <li><a href="#">Placeholder</a></li>
+                    <li><a href="#">Placeholder 2</a></li>
+                    <li><a class='dropdown-trigger' href='#' data-target='feature-dropdown'>Search Art By<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+                    <!-- Dropdown Search menu-->
+                <ul id='feature-dropdown' class='dropdown-content'>
+                    <li><a href="#">Artist</a></li>
+                    <li><a href="#">Keyword</a></li>
+                    <li><a href="#">Color</a></li>
+                </ul>
+        </div>
+    </nav>
 
     <main> 
         <section class="container">
-            <div class="card-panel teal lighten-2">
-                <h2>Hello</h2>
+            <div class="carousel">
+                <a id="carousel-item-1" class="carousel-item" href="#"><img src="https://www.artic.edu/iiif/2/7690dd6e-05ed-773c-a80e-e7cc4eb879cc/full/843,/0/default.jpg"></a>
+                <a id="carousel-item-2" class="carousel-item" href="#"><img src="https://www.artic.edu/iiif/2/b3974542-b9b4-7568-fc4b-966738f61d78/full/843,/0/default.jpg"></a>
+                <a id="carousel-item-3" class="carousel-item" href="#"><img src="https://www.artic.edu/iiif/2/3c27b499-af56-f0d5-93b5-a7f2f1ad5813/full/843,/0/default.jpg"></a>
+                <a id="carousel-item-4" class="carousel-item" href="#"><img src="https://www.artic.edu/iiif/2/173ec65a-bc7e-067c-fed1-1677bf5f26a9/full/843,/0/default.jpg"></a>
+                <a id="carousel-item-5" class="carousel-item" href="#"><img src="https://www.artic.edu/iiif/2/4747ac8d-191c-75ac-3198-f7b551441fe4/full/843,/0/default.jpg"></a>
             </div>
+
             <div>
                 <h2> <span class="blue-text text-darken-2">Materialize and JS loaded</span></h2>
             </div>
         </section>
     </main>
 
-    <footer>
-        <h3>Group 4</h3>
-    </footer>
+    
 </body>
 </html>
