@@ -6,3 +6,7 @@ $(document).ready(function(){
     coverTrigger: false,
     constrainWidth: false
   });
+
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });

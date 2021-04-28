@@ -18,27 +18,47 @@
 
 </head>
 <body>
-    <nav class="purple darken-2">      
-        
+    <nav class="purple darken-2">
         <div class="nav-wrapper container">
-                <!-- Art Wayfinder -->
+            <!-- Art Wayfinder -->
             <a href="index.html" class="brand-logo"><i class="material-icons">palette</i>Art Wayfinder</a>
-                    <!-- Nav Menu-->
-                <ul class="right hide-on-med-and-down">
-                    <li class="active"><a href="index.html">Gallery</a></li>
-                    <li><a href="https://www.artic.edu/" target="_blank">Art Institvte Chicago</a></li>
-                    <li><a href="#">Placeholder</a></li>
-                    <li><a href="#">Placeholder 2</a></li>
-                    <li><a class='dropdown-trigger' href='#' data-target='feature-dropdown'>Search Art By<i class="material-icons right">arrow_drop_down</i></a></li>
-                </ul>
-                    <!-- Dropdown Search menu-->
-                <ul id='feature-dropdown' class='dropdown-content'>
-                    <li><a href="#">Artist</a></li>
-                    <li><a href="#">Keyword</a></li>
-                    <li><a href="#">Color</a></li>
-                </ul>
+                <!-- Nav Menu-->
+            <ul class="right hide-on-med-and-down">
+                <li class="active"><a href="index.html">Gallery</a></li>
+                <li><a href="https://www.artic.edu/" target="_blank">Art Institvte Chicago</a></li>
+                <li><a href="#">Placeholder</a></li>
+                <li><a href="#">Placeholder 2</a></li>
+                <li><a class='dropdown-trigger' href='#' data-target='feature-dropdown'>Search Art By<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+                <!-- Dropdown Search menu-->
+            <ul id='feature-dropdown' class='dropdown-content'>
+                <li class="artist"><a href="#">Artist</a></li>
+                <li class="keyword"><a href="#">Keyword</a></li>
+                <li class="color"><a href="#">Color</a></li>
+            </ul>
         </div>
     </nav>
+
+    <!-- Nav Sidebar -->
+    <ul id="slide-out" class="sidenav">
+        <div class="user-view">
+            <div class="background">
+                <img src="https://www.artic.edu/iiif/2/3c27b499-af56-f0d5-93b5-a7f2f1ad5813/full/843,/0/default.jpg">
+            </div>
+            <a href="index.html"><i class="medium material-icons white-text">palette</i></a>      
+            <h2 class="purple-text text-darken-3">Art Wayfinder</h2>
+            <p class="white-text">Find art from the</p><a href="https://www.artic.edu/" target="_blank"><span class="white-text">Art Institvte of Chicago</span></a>
+        </div>
+
+        <li><a class="subheader">Search for Art By</a></li>
+        <!-- Search Art By... -->
+        <li class="artist"><a class="waves-effect" href="#!"><i class="material-icons">person</i>Artist</a></li>
+        <li class="keyword"><a class="waves-effect" href="#!"><i class="material-icons">short_text</i>Keyword</a></li>
+        <li class="color"><a class="waves-effect" href="#!"><i class="material-icons">brush</i>Color</a></li>
+    </ul>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class=" medium material-icons">menu</i></a>
+
+
 
     <main> 
         <section class="container">
