@@ -52,9 +52,9 @@
 
         <li><a class="subheader">Search for Art By</a></li>
         <!-- Search Art By... -->
-        <li class="artist"><a class="waves-effect" href="#!"><i class="material-icons">person</i>Artist</a></li>
-        <li class="keyword"><a class="waves-effect" href="#!"><i class="material-icons">short_text</i>Keyword</a></li>
-        <li class="color"><a class="waves-effect" href="#!"><i class="material-icons">brush</i>Color</a></li>
+        <li class="artist"><a class="waves-effect waves-purple" href="#!"><i class="material-icons">person</i>Artist</a></li>
+        <li class="keyword"><a class="waves-effect waves-purple" href="#!"><i class="material-icons">short_text</i>Keyword</a></li>
+        <li class="color"><a class="waves-effect waves-purple" href="#!"><i class="material-icons">brush</i>Color</a></li>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class=" medium material-icons">menu</i></a>
 
@@ -71,7 +71,21 @@
             </div>
 
             <div>
-                <h2> <span class="blue-text text-darken-2">Materialize and JS loaded</span></h2>
+                <!-- Color selector form -->
+                <form action="/action_page.php">
+                    <label for="color-form">Select your color:</label>
+                    <input type="color" id="color-form" name="color-form" value="#ff0000"><br><br>
+                    <input type="submit">
+                  </form>
+                  <!-- text input form -->
+                  <form action="/action_page.php">
+                    <label for="artist-form">Artist:</label><br>
+                    <input type="text" id="artist-form" name="artist-form" value="Monet"><br>
+                    <input type="submit" value="Submit">
+                  </form>
+            </div>
+            <div id="diplay-img">
+                <img src="https://www.artic.edu/iiif/2/4747ac8d-191c-75ac-3198-f7b551441fe4/full/843,/0/default.jpg">
             </div>
         </section>
     </main>
