@@ -12,9 +12,6 @@ $(document).ready(function () {
 });
 
 // wikipedia Api call
-// get page element we will stuff this into
-// const mainEl = document.querySelector("main");
-
 const searchWikiAPIUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch="
 
 const getWikiPageAPIUrl = "https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&formatversion=2&origin=*&page="
@@ -85,6 +82,6 @@ findWikiPage("mona lisa", "davinci").then(function (wikiPage) {
     wikiPage = "No Information Available";
   }
   //Stuff summary into page element
-  // mainEl.innerHTML = wikiPage;
+  
 });
 //end wikipedia api calls
