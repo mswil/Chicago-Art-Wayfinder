@@ -70,7 +70,23 @@
                 <a id="carousel-item-5" class="carousel-item" href="#"><img src="https://www.artic.edu/iiif/2/4747ac8d-191c-75ac-3198-f7b551441fe4/full/843,/0/default.jpg"></a>
             </div>
 
-           
+            <div>
+                <!-- Color selector form -->
+                <form action="/action_page.php">
+                    <label for="color-form">Select your color:</label>
+                    <input type="color" id="color-form" name="color-form" value="#ff0000"><br><br>
+                    <input type="submit">
+                  </form>
+                  <!-- text input form -->
+                  <form action="/action_page.php">
+                    <label for="artist-form">Artist:</label><br>
+                    <input type="text" id="artist-form" name="artist-form" value="Monet"><br>
+                    <input type="submit" value="Submit">
+                  </form>
+            </div>
+            <div id="diplay-img">
+                <img src="https://www.artic.edu/iiif/2/4747ac8d-191c-75ac-3198-f7b551441fe4/full/843,/0/default.jpg">
+            </div>
         </section>
     </main>
 
