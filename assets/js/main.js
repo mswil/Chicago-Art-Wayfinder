@@ -127,7 +127,9 @@ async function imagePull() {
         if (!wikiPage) {
           wikiPage = "No Information Available";
         }
-        console.log(wikiPage);
+        let wikiPageEl = document.createElement("p");
+        wikiPageEl.textContent = wikiPage;
+        imgEl.append(wikiPageEl);
         //create card from info
       });
     });
