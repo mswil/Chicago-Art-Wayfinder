@@ -105,7 +105,7 @@ async function imagePull() {
   fetch(
     "https://api.artic.edu/api/v1/artworks/search?q=" +
       searchTerm +
-      "&query[term][is_public_domain]=true&limit=10&fields=id,title,image_id,alt_image_ids,artist_title"
+      "&query[term][is_public_domain]=true&limit=10&fields=id,title,image_id,alt_image_ids,artist_title,color"
   )
     .then(function (response) {
       return response.json();
