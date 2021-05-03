@@ -18,43 +18,17 @@ $("#submitBtn").on("click", (e) => {
   imgEl.empty();
   imagePull();
 
-  findWikiPage(artName, artist).then(function (wikiPage) {
-    if (!wikiPage) {
-      wikiPage = "No Information Available";
-    }
-    console.log(this);
-    //Stuff summary into page element
-  });
+  // findWikiPage(artName, artist).then(function (wikiPage) {
+  //   if (!wikiPage) {
+  //     wikiPage = "No Information Available";
+  //   }
+  //   console.log(this);
+  //   //Stuff summary into page element
+  // });
 });
 
 let artName;
 let artist;
-function imagePull() {
-  var searchTerm = document.querySelector("#artist-form").value;
-
-  fetch(
-    "https://api.artic.edu/api/v1/artworks/search?q=" +
-      searchTerm +
-      "&query[term][is_public_domain]=true&limit=10&fields=id,title,image_id,alt_image_ids,artist_title"
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (response) {
-      console.log(response.data[0]);
-      artName = response.data[0].title;
-      artist = response.data[0].artist_title;
-      console.log(artist);
-      console.log(artName);
-      var artImg = document.createElement("img");
-      var imageUrl =
-        "https://www.artic.edu/iiif/2/" +
-        response.data[0].image_id +
-        "/full/843,/0/default.jpg";
-      artImg.setAttribute("src", imageUrl);
-      imgEl.append(artImg);
-    });
-}
 
 // wikipedia Api call
 const searchWikiAPIUrl =
@@ -84,13 +58,12 @@ const findWikiPage = async function (artName, artist) {
   const results = data.query.search;
 
   for (let result of results) {
-    const wikiPage = await getWikiPage(result.title);
-
+    let pageName = result.title;
+    const wikiPage = await getWikiPage(pageName);
     //check to see if the artist is mentioned anywhere on the page
     if (wikiPage.toLowerCase().includes(artist.toLowerCase())) {
       //get the summary of the page
       const wikiPageSummary = await getWikiPageSummary(result.pageid);
-
       return wikiPageSummary;
     }
   }
@@ -107,7 +80,6 @@ const getWikiPage = async function (pageName) {
     console.error("no wiki page", response);
     return "";
   }
-
   const data = await response.json();
   return data.parse.text;
 };
@@ -125,10 +97,38 @@ const getWikiPageSummary = async function (pageId) {
   return data.query.pages[pageId].extract;
 };
 
-// findWikiPage(artName, artist).then(function (wikiPage) {
-//   if (!wikiPage) {
-//     wikiPage = "No Information Available";
-//   }
-//   //Stuff summary into page element
-// });
 //end wikipedia api calls
+
+async function imagePull() {
+  var searchTerm = document.querySelector("#artist-form").value;
+
+  fetch(
+    "https://api.artic.edu/api/v1/artworks/search?q=" +
+      searchTerm +
+      "&query[term][is_public_domain]=true&limit=10&fields=id,title,image_id,alt_image_ids,artist_title"
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (response) {
+      console.log(response);
+      artName = response.data[0].title;
+      artist = response.data[0].artist_title;
+      //go inside card function
+      var artImg = document.createElement("img");
+      var imageUrl =
+        "https://www.artic.edu/iiif/2/" +
+        response.data[0].image_id +
+        "/full/843,/0/default.jpg";
+      artImg.setAttribute("src", imageUrl);
+      imgEl.append(artImg);
+
+      findWikiPage(artName, artist).then(function (wikiPage) {
+        if (!wikiPage) {
+          wikiPage = "No Information Available";
+        }
+        console.log(wikiPage);
+        //create card from info
+      });
+    });
+}
