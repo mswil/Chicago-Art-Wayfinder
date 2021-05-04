@@ -1,14 +1,13 @@
-$(document).ready(function () {
-  $(".carousel").carousel();
-});
-
 $(".dropdown-trigger").dropdown({
   coverTrigger: false,
   constrainWidth: false,
+  closeOnClick: false
 });
-
+  
 $(document).ready(function () {
+  $('.collapsible').collapsible();
   $(".sidenav").sidenav();
+  $(".carousel").carousel();
 });
 
 var imgEl = $("#display-img");

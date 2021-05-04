@@ -7,3 +7,12 @@
 img {
     object-fit: contain;
 }
+.sidenav-trigger {
+    position: absolute;
+    top: 0.75rem;
+  }
+
+  .sidenav-trigger i {
+    font-size: 3rem;
+  }
+  
