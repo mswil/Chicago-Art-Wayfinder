@@ -1,161 +1,50 @@
-const imgEl = $("#display-img");
-// wikipedia Api call
-const searchWikiAPIUrl =
-  "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=";
-
-const getWikiPageAPIUrl =
-  "https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&formatversion=2&origin=*&page=";
-const getWikiPageSummaryAPIUrl =
-  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&origin=*&pageids=";
-
-let artName;
-let artist;
-
-$(document).ready(main);
 
 $(".dropdown-trigger").dropdown({
   coverTrigger: false,
   constrainWidth: false,
   closeOnClick: false
 });
-
-$("#submitBtn").on("click", (e) => {
-  e.preventDefault();
-
-  imgEl.empty();
-  imagePull();
-
-  // findWikiPage(artName, artist).then(function (wikiPage) {
-  //   if (!wikiPage) {
-  //     wikiPage = "No Information Available";
-  //   }
-  //   console.log(this);
-  //   //Stuff summary into page element
-  // });
-});
-
-function main() {
+  
+$(document).ready(function () {
   $('.collapsible').collapsible();
   $(".sidenav").sidenav();
   $(".carousel").carousel();
   $('.modal').modal({
-    onCloseEnd: function () {
+    onCloseEnd: function() {
       $("#fav-btn").off("click");
     }
   });
-}
+});
 
-function saveFavorite(artwork) {
-  var savedFavorites = loadFavorite();
-  savedFavorites.push(artwork);
-  localStorage.setItem("favoriteArt", JSON.stringify(savedFavorites));
-}
+$("#color-btn").on("click", function () {
+  const rgb = $("#color").val();
+  const hue = hexToHue(rgb);
 
-function loadFavorite() {
-  var savedFavorites = localStorage.getItem("favoriteArt");
-  if (!savedFavorites) {
-    return [];
-  }
-  savedFavorites = JSON.parse(savedFavorites);
-  return savedFavorites;
-} 
-
-/* findWikiPage:
-Search for possible pages. 
-Look through each page and see if it mentions the artist. 
-Return html of page summary that matches the art's name and mentions the artist. 
-*** artName and artist must be strings returned from the chicago API ***   */
-async function findWikiPage(artName, artist) {
-  const response = await fetch(searchWikiAPIUrl + artName);
-
-  if (!response.ok) {
-    console.error("wiki query not okay", response);
-    return "";
-  }
-
-  const data = await response.json();
-
-  // data format data.query.search[#].title
-  const results = data.query.search;
-
-  for (let result of results) {
-    let pageName = result.title;
-    const wikiPage = await getWikiPage(pageName);
-    //check to see if the artist is mentioned anywhere on the page
-    if (wikiPage.toLowerCase().includes(artist.toLowerCase())) {
-      //get the summary of the page
-      const wikiPageSummary = await getWikiPageSummary(result.pageid);
-      return wikiPageSummary;
+  searchByHue(hue).then(function (artwork) {
+    if (!artwork) {
+      //toast
     }
-  }
+    else {
+      showModal(artwork);
+    }
+  });
+});
 
-  console.warn("no art & artist match");
-  return "";
-};
+$("#keyword-btn").on("click", function () {
 
-/* gets a wikipedia page by the page's name returns its html */
-async function getWikiPage(pageName) {
-  const response = await fetch(getWikiPageAPIUrl + pageName);
+  const keyword = $("#keyword").val();
 
-  if (!response.ok) {
-    console.error("no wiki page", response);
-    return "";
-  }
-  const data = await response.json();
-  return data.parse.text;
-};
+  searchByKeyword(keyword).then(function (artwork) {
+    if (!artwork) {
+      //toast
+    }
+    else {
+      showModal(artwork);
+    }
+  });
+});
 
-async function getWikiPageSummary(pageId) {
-  pageId = parseInt(pageId);
-  const response = await fetch(getWikiPageSummaryAPIUrl + pageId);
-
-  if (!response.ok) {
-    console.error("no wiki page", response);
-    return "";
-  }
-
-  const data = await response.json();
-  return data.query.pages[pageId].extract;
-};
-//end wikipedia api calls
-
-async function imagePull() {
-  var searchTerm = document.querySelector("#artist-form").value;
-
-  fetch(
-    "https://api.artic.edu/api/v1/artworks/search?q=" +
-    searchTerm +
-    "&query[term][is_public_domain]=true&limit=10&fields=id,title,image_id,alt_image_ids,artist_title,color"
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (response) {
-      console.log(response);
-      artName = response.data[0].title;
-      artist = response.data[0].artist_title;
-      //go inside card function
-      var artImg = document.createElement("img");
-      var imageUrl =
-        "https://www.artic.edu/iiif/2/" +
-        response.data[0].image_id +
-        "/full/843,/0/default.jpg";
-      artImg.setAttribute("src", imageUrl);
-      imgEl.append(artImg);
-
-      findWikiPage(artName, artist).then(function (wikiPage) {
-        if (!wikiPage) {
-          wikiPage = "No Information Available";
-        }
-        let wikiPageEl = document.createElement("p");
-        wikiPageEl.textContent = wikiPage;
-        imgEl.append(wikiPageEl);
-        //create card from info
-      });
-    });
-}
-
-function showModal(artwork) {
+const showModal = function (artwork) {
   // If time Populate modal should show loading indicators for the wikipedia information
 
   const modal = $("#modal");
@@ -167,7 +56,7 @@ function showModal(artwork) {
     modal.find("p").text(summary);
   });
 
-
+  
   if (isFavorited(artwork)) {
     modal.find("#fav-btn").text("Unfavorite");
   }
@@ -181,3 +70,57 @@ function showModal(artwork) {
 
   $('.modal').modal("open");
 };
+
+const hexToHue = function (hex) {
+
+  const red = parseInt("0x" + hex.slice(1, 3));
+  const green = parseInt("0x" + hex.slice(3, 5));
+  const blue = parseInt("0x" + hex.slice(5, 7));
+
+  const hsl = rgbToHsl(red, green, blue);
+
+  return Math.floor(hsl.h);
+
+}
+
+/*from https://www.w3schools.com/lib/w3color.js */
+function rgbToHsl(r, g, b) {
+  var min, max, i, l, s, maxcolor, h, rgb = [];
+  rgb[0] = r / 255;
+  rgb[1] = g / 255;
+  rgb[2] = b / 255;
+  min = rgb[0];
+  max = rgb[0];
+  maxcolor = 0;
+  for (i = 0; i < rgb.length - 1; i++) {
+    if (rgb[i + 1] <= min) { min = rgb[i + 1]; }
+    if (rgb[i + 1] >= max) { max = rgb[i + 1]; maxcolor = i + 1; }
+  }
+  if (maxcolor == 0) {
+    h = (rgb[1] - rgb[2]) / (max - min);
+  }
+  if (maxcolor == 1) {
+    h = 2 + (rgb[2] - rgb[0]) / (max - min);
+  }
+  if (maxcolor == 2) {
+    h = 4 + (rgb[0] - rgb[1]) / (max - min);
+  }
+  if (isNaN(h)) { h = 0; }
+  h = h * 60;
+  if (h < 0) { h = h + 360; }
+  l = (min + max) / 2;
+  if (min == max) {
+    s = 0;
+  } else {
+    if (l < 0.5) {
+      s = (max - min) / (max + min);
+    } else {
+      s = (max - min) / (2 - max - min);
+    }
+  }
+  s = s;
+  return { h: h, s: s, l: l };
+}
+
+displayFavorites();
+
