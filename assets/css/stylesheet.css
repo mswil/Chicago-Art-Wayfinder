@@ -2,3 +2,13 @@
     margin: 0;
     padding: 0;
 }
+
+.sidenav-trigger {
+    position: absolute;
+    top: 0.75rem;
+  }
+
+  .sidenav-trigger i {
+    font-size: 3rem;
+  }
+  
