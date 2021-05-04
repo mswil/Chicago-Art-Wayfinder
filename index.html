@@ -60,17 +60,53 @@
 
     <li><a class="subheader">Search for Art By</a></li>
     <!-- Search Art By... -->
-    <li class="artist">
-      <a class="waves-effect waves-purple" href="#!"><i class="material-icons">person</i>Artist</a>
-    </li>
-    <li class="keyword">
-      <a class="waves-effect waves-purple" href="#!"><i class="material-icons">short_text</i>Keyword</a>
-    </li>
-    <li class="color">
-      <a class="waves-effect waves-purple" href="#!"><i class="material-icons">brush</i>Color</a>
-    </li>
+    <!-- Search Art By... -->
+    <ul class="collapsible">
+      <li>
+          <div class="collapsible-header waves-effect waves-purple">
+              <i class="material-icons">person</i>Artist
+          </div>
+          <div class="collapsible-body">
+              <div class="input-field">
+                  <input placeholder="Monet" id="artist" type="text" class="validate">
+                  <button id="artist-btn" class="btn waves-effect waves-purple" type="button" name="artist">Submit
+                      <i class="material-icons right">send</i>
+                  </button>
+              </div>
+          </div>
+      </li>
+
+      <li>
+          <div class="collapsible-header waves-effect waves-purple">
+              <i class="material-icons">short_text</i>Keyword
+          </div>
+          <div class="collapsible-body">
+              <div class="input-field">
+                  <input placeholder="Lilies" id="keyword" type="text" class="validate">
+                  <button id="keyword-btn" class="btn waves-effect waves-purple" type="button"
+                      name="keyword">Submit
+                      <i class="material-icons right">send</i>
+                  </button>
+              </div>
+          </div>
+      </li>
+
+      <li>
+          <div class="collapsible-header waves-effect waves-purple">
+              <i class="material-icons">brush</i>Color
+          </div>
+          <div class="collapsible-body">
+              <div class="input-field">
+                  <input placeholder="#9b1dc9" id="color" type="color" class="validate">
+                  
+                  <button id="color-btn" class="btn waves-effect waves-purple" type="button" name="color">
+                      Submit
+                      <i class="material-icons right">send</i>
+                  </button>
+              </div>
+          </div>
+      </li>
   </ul>
-  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="medium material-icons">menu</i></a>
 
   <main>
     <section class="container">
