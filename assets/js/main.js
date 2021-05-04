@@ -8,6 +8,11 @@ $(document).ready(function () {
   $('.collapsible').collapsible();
   $(".sidenav").sidenav();
   $(".carousel").carousel();
+  $('.modal').modal({
+    onCloseEnd: function() {
+      $("#fav-btn").off("click");
+    }
+  });
 });
 
 var imgEl = $("#display-img");
@@ -133,3 +138,30 @@ async function imagePull() {
       });
     });
 }
+
+const showModal = function (artwork) {
+  // If time Populate modal should show loading indicators for the wikipedia information
+
+  const modal = $("#modal");
+  modal.find("h4").text(artwork.title);
+  modal.find("span").text(artwork.artist);
+  modal.find("img").attr("src", artwork.imageUrl);
+
+  findWikiPage(artwork.title, artwork.artist).then(function (summary) {
+    modal.find("p").text(summary);
+  });
+
+  
+  if (isFavorited(artwork)) {
+    modal.find("#fav-btn").text("Unfavorite");
+  }
+  else {
+    modal.find("#fav-btn").text("Favorite");
+  }
+
+  modal.find("#fav-btn").on("click", function () {
+    toggleFavorite(artwork);
+  });
+
+  $('.modal').modal("open");
+};

@@ -22,11 +22,13 @@ const toggleFavorite = function (artwork) {
     //if an artwork is not in the favorites list, add it
     if (!isFavorited(artwork)) {
         saveFavorite(artwork);
+        $("#modal").find("#fav-btn").text("Unfavorite");
     }
     //if an artwork is in the favorites list, remove it
     else {
         //this is not triggering
         deleteFavorite(artwork);
+        $("#modal").find("#fav-btn").text("Favorite");
     }
     displayFavorites()
 };
@@ -44,12 +46,12 @@ const displayFavorites = function () {
     if (favorites.length) {
         $("#favorites").append("<div class='row title'><h4>Favorites:</h4></div>");
         $("#favorites").append("<div class='row content'></div>");
-        
+
         const row = $("#favorites").find(".content");
         for (let favorite of favorites) {
             row.append(populateFavoriteCard(favorite));
         };
-        
+
     }
 }
 
@@ -60,7 +62,7 @@ const populateFavoriteCard = function (artwork) {
     template.find("img").attr("src", artwork.imageUrl);
 
     template.on("click", function () {
-        //show modal
+        showModal(artwork);
     });
     return template;
 };
