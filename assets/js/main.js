@@ -25,23 +25,23 @@ var loadFavorite = function () {
 
 
 var saveFavorite = function (artwork) {
-var savedFavorites = loadFavorite();
-savedFavorites.push(artwork);
-localStorage.setItem("favoriteArt",JSON.stringify(savedFavorites));
+  var savedFavorites = loadFavorite();
+  savedFavorites.push(artwork);
+  localStorage.setItem("favoriteArt", JSON.stringify(savedFavorites));
 
 }
 
 const someArt = [
   {
-      artId: 1,
-      name: "painting",
-      artist: "bob ross"
+    artId: 1,
+    name: "painting",
+    artist: "bob ross"
   },
   {
-      artId: 3,
-      name: "drawing",
-      artist: "little billy"
+    artId: 3,
+    name: "drawing",
+    artist: "little billy"
   }
 ]
-​
+
 saveFavorite(someArt[0]);
