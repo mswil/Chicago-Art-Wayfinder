@@ -1,20 +1,22 @@
-$(document).ready(function () {
-  $('.carousel').carousel();
-});
+$(document).ready(main);
 
 $('.dropdown-trigger').dropdown({
   coverTrigger: false,
   constrainWidth: false
-});
+})
 
-$(document).ready(function () {
+function main() {
+  $('.carousel').carousel();
   $('.sidenav').sidenav();
-});
+}
 
+function saveFavorite(artwork) {
+  var savedFavorites = loadFavorite();
+  savedFavorites.push(artwork);
+  localStorage.setItem("favoriteArt", JSON.stringify(savedFavorites));
+}
 
-
-
-var loadFavorite = function () {
+function loadFavorite() {
   var savedFavorites = localStorage.getItem("favoriteArt");
   if (!savedFavorites) {
     return [];
@@ -24,12 +26,6 @@ var loadFavorite = function () {
 }
 
 
-var saveFavorite = function (artwork) {
-  var savedFavorites = loadFavorite();
-  savedFavorites.push(artwork);
-  localStorage.setItem("favoriteArt", JSON.stringify(savedFavorites));
-
-}
 
 const someArt = [
   {
