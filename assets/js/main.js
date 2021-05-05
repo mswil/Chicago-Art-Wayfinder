@@ -4,17 +4,27 @@ $(".dropdown-trigger").dropdown({
   closeOnClick: false,
 });
 
+
+
 $(document).ready(function () {
   $(".collapsible").collapsible();
   $(".sidenav").sidenav();
-  $(".carousel").carousel();
+  $('.carousel').carousel(
+    //{fullWidth: true},
+    //{noWrap: true}
+  );
+
   $(".modal").modal({
+    
+     $('.materialboxed').materialbox();
     onCloseEnd: function () {
       $("#fav-btn").off("click");
       clearModal();
     }
   });
 });
+
+
 
 $("#color-btn").on("click", function () {
   const rgb = $("#color").val();
@@ -70,7 +80,8 @@ const showModal = function (artwork) {
   const modal = $("#modal");
   modal.find("h4").text(artwork.title);
   modal.find("span").text(artwork.artist || "Artist Unknown");
-  modal.find("img").attr("src", artwork.imageUrl);
+  modal.find("img").addClass("materialboxed").attr("src", artwork.imageUrl);
+
 
   findWikiPage(artwork.title, artwork.artist).then(function (summary) {
     modal.find("p").text(summary);

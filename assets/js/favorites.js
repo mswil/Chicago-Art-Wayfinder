@@ -39,7 +39,7 @@ const populateFavoriteCard = function (artwork) {
     const template = $($("#favorite-card-template").html());
     //give id to find for removal later
     template.find("#card").parent().attr("id", artwork.id);
-    template.find("img").attr("src", artwork.imageUrl);
+    template.find("img").addClass('card-img').attr("src", artwork.imageUrl);
 
     template.on("click", function () {
         showModal(artwork);
