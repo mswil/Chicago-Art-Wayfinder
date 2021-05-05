@@ -4,27 +4,23 @@ $(".dropdown-trigger").dropdown({
   closeOnClick: false,
 });
 
-
-
 $(document).ready(function () {
   $(".collapsible").collapsible();
   $(".sidenav").sidenav();
-  $('.carousel').carousel(
+  $(".carousel")
+    .carousel
     //{fullWidth: true},
     //{noWrap: true}
-  );
+    ();
 
   $(".modal").modal({
-    
-     $('.materialboxed').materialbox();
     onCloseEnd: function () {
+      $(".materialboxed").materialbox();
       $("#fav-btn").off("click");
       clearModal();
-    }
+    },
   });
 });
-
-
 
 $("#color-btn").on("click", function () {
   const rgb = $("#color").val();
@@ -35,7 +31,6 @@ $("#color-btn").on("click", function () {
       //Maybe toast to alert user
     } else {
       showModal(artwork);
-      
     }
   });
 });
@@ -82,7 +77,6 @@ const showModal = function (artwork) {
   modal.find("span").text(artwork.artist || "Artist Unknown");
   modal.find("img").addClass("materialboxed").attr("src", artwork.imageUrl);
 
-
   findWikiPage(artwork.title, artwork.artist).then(function (summary) {
     modal.find("p").text(summary);
   });
@@ -104,12 +98,14 @@ const clearModal = function () {
   const modal = $("#modal");
   modal.find("h4").text("");
   modal.find("span").text("");
-  modal.find("img").attr("src", "https://icon-library.com/images/no-image-available-icon/no-image-available-icon-6.jpg");
+  modal
+    .find("img")
+    .attr(
+      "src",
+      "https://icon-library.com/images/no-image-available-icon/no-image-available-icon-6.jpg"
+    );
   modal.find("p").text("Loading...");
-
-}
-
-
+};
 
 const hexToHue = function (hex) {
   const red = parseInt("0x" + hex.slice(1, 3));
