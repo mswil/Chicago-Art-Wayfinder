@@ -88,17 +88,15 @@ const getRandom = async function () {
   return artwork;
 };
 
-const createArtworkObj = function (data) {
-  console.log("creating object");
-  const artwork = {
-    id: data.id,
-    title: data.title,
-    artist: data.artist_title,
-    imageUrl:
-      "https://www.artic.edu/iiif/2/" +
-      data.image_id +
-      "/full/843,/0/default.jpg",
-  };
-  console.log(artwork);
-  return artwork;
+createArtworkObj = function (data) {
+    console.log("creating object")
+    const artwork = {
+        id: data.id,
+        title: data.title,
+        artist: data.artist_title,
+        imageUrl: "https://www.artic.edu/iiif/2/" + data.image_id + "/full/843,/0/default.jpg",
+    }
+    
+    console.log(artwork)
+    return artwork;
 };

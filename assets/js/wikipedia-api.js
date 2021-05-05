@@ -15,7 +15,13 @@ Look through each page and see if it mentions the artist.
 Return html of page summary that matches the art's name and mentions the artist. 
 *** artName and artist must be strings returned from the chicago API ***   */
 const findWikiPage = async function (artName, artist) {
-  const response = await fetch(searchWikiAPIUrl + artName);
+
+    //if there is no artist, don't grab wikipage. Don't want dissociative data
+    if (!artist) {
+        return "No Wikipedia information available";
+    }
+    
+    const response = await fetch(searchWikiAPIUrl + artName);
 
   if (!response.ok) {
     console.error("wiki query not okay", response);

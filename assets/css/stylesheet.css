@@ -19,6 +19,10 @@
   /* mobile height 270 */
 }
 
+.card.small .card-image {
+    max-height: 100%;
+}
+
 img {
-  object-fit: contain;
+    /* object-fit: contain; */
 }
