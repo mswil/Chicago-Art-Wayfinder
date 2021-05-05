@@ -21,9 +21,10 @@ $("#color-btn").on("click", function () {
 
   searchByHue(hue).then(function (artwork) {
     if (!artwork) {
-      //toast
+      //Maybe toast to alert user
     } else {
       showModal(artwork);
+      
     }
   });
 });

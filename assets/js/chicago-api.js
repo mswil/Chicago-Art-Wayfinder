@@ -15,13 +15,11 @@ async function searchByHue(hue) {
     return {};
   }
 
-  const data = await response.json();
-  console.log(data);
-  if (!data.data.length) {
-    return null;
-  }
-  console.log(data[0]);
-  const artwork = createArtworkObj(data.data[0]);
+    const data = await response.json();
+    if (!data.data.length) {
+        return null;
+    }
+    const artwork = createArtworkObj(data.data[0]);
 
   return artwork;
 }
@@ -89,7 +87,6 @@ const getRandom = async function () {
 };
 
 createArtworkObj = function (data) {
-    console.log("creating object")
     const artwork = {
         id: data.id,
         title: data.title,
@@ -97,6 +94,5 @@ createArtworkObj = function (data) {
         imageUrl: "https://www.artic.edu/iiif/2/" + data.image_id + "/full/843,/0/default.jpg",
     }
     
-    console.log(artwork)
     return artwork;
 };

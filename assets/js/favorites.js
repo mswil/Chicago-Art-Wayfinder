@@ -7,7 +7,6 @@ const toggleFavorite = function (artwork) {
     }
     //if an artwork is in the favorites list, remove it
     else {
-        //this is not triggering
         deleteFavorite(artwork);
         $("#modal").find("#fav-btn").text("Favorite");
     }
