@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <!-- Materialize -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="css/gallery-materialize.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="./assets/css/stylesheet.css">
 </head>
@@ -114,12 +115,17 @@
   <!-- Modal Structure -->
   <div id="modal" class="modal">
     <div class="modal-content">
+      <div id="modal-header" class="purple darken-2">
+        <h4><span class="grey-text text-darken-"></span></h4>
+      <a href="#!" id="fav-btn" class="btn waves-effect waves-purple">Favorite</a>
+      </div>
+      
       <div class="modal-img">
         <img scr="">
       </div>
-      <h4><span class="grey-text text-darken-"></span></h4>
-      <p>Loading...</p>
-      <a href="#!" id="fav-btn" class="btn waves-effect waves-purple">Favorite</a>
+      
+      <p id="modal-text-area">Loading...</p>
+      
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn-flat"></a>
@@ -145,9 +151,9 @@
 
     <script id="favorite-card-template" type="text/x-custom-template">
             <div class="col s4">
-                <div class="card hoverable small valign-wrapper">
+                <div class="card hoverable small valign-wrapper grey lighten-4">
                     <div class="card-image">
-                        <img class="responsive-img" src="">
+                        <img class="card-img" src="">
                     </div>
                 </div>
             </div>
@@ -169,6 +175,8 @@
   <script src="./assets/js/wikipedia-api.js"></script>
   <!-- Chicago Art Institute -->
   <script src="./assets/js/chicago-api.js"></script>
+  <!-- Gallery JS -->
+  <script src="js/materialize.min.js"></script>
   <!-- Main page logic -->
   <script src="./assets/js/main.js"></script>
 

@@ -12,6 +12,30 @@
   font-size: 3rem;
 }
 
+.modal-content {
+  display: flex;
+  flex-direction: column;
+}
+
+#modal-header {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#modal-header h4 {
+  margin: 10px;
+  color: white;
+}
+
+#modal-text-area {
+  text-align: center;
+}
+
+#fav-btn {
+  margin: 10px;  
+}
+
 .modal-img img {
   width: 100%;
   height: 400px;
@@ -29,5 +53,13 @@ img {
 
 .sidenav-trigger {
   margin-left: 15px;
+}
+
+.card-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin: auto;
+  width: 50%;
 }
 
