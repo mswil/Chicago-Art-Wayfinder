@@ -22,3 +22,12 @@
 img {
   object-fit: contain;
 }
+
+.input-field {
+  margin: 0 20px;
+}
+
+.sidenav-trigger {
+  margin-left: 15px;
+}
+
