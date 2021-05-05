@@ -11,7 +11,8 @@ $(document).ready(function () {
   $(".modal").modal({
     onCloseEnd: function () {
       $("#fav-btn").off("click");
-    },
+      clearModal();
+    }
   });
 });
 
@@ -87,6 +88,17 @@ const showModal = function (artwork) {
 
   $(".modal").modal("open");
 };
+
+const clearModal = function () {
+  const modal = $("#modal");
+  modal.find("h4").text("");
+  modal.find("span").text("");
+  modal.find("img").attr("src", "https://icon-library.com/images/no-image-available-icon/no-image-available-icon-6.jpg");
+  modal.find("p").text("Loading...");
+
+}
+
+
 
 const hexToHue = function (hex) {
   const red = parseInt("0x" + hex.slice(1, 3));

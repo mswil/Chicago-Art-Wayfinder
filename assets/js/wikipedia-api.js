@@ -4,10 +4,8 @@ const mainEl = document.querySelector("main");
 const searchWikiAPIUrl =
   "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=";
 
-const getWikiPageAPIUrl =
-  "https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&formatversion=2&origin=*&page=";
-const getWikiPageSummaryAPIUrl =
-  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&origin=*&pageids=";
+const getWikiPageAPIUrl = "https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&formatversion=2&origin=*&page="
+const getWikiPageSummaryAPIUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro&explaintext&redirects=1&origin=*&pageids="
 
 /* findWikiPage:
 Search for possible pages. 
