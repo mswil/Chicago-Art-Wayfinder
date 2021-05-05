@@ -35,7 +35,7 @@ const findWikiPage = async function (artName, artist) {
 
         //if there is an artist check to see if the artist is mentioned anywhere on the page
         if (wikiPage.toLowerCase().includes(artist.toLowerCase())) {
-            //get the summary of the page
+            //gets the summary of the page
             const wikiPageSummary = await getWikiPageSummary(result.pageid);
 
             return wikiPageSummary;
