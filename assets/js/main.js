@@ -28,6 +28,18 @@ $("#color-btn").on("click", function () {
   });
 });
 
+$("#artist-btn").on("click", function () {
+  const artist = $("#artist").val().toLowerCase();
+
+  searchByArtist(artist).then(function (artwork) {
+    if (!artwork) {
+      //toast
+    } else {
+      showModal(artwork);
+    }
+  });
+});
+
 $("#keyword-btn").on("click", function () {
   const keyword = $("#keyword").val();
 

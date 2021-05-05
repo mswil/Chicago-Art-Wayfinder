@@ -4,9 +4,30 @@ const searchByKeywordApiUrl =
   "https://api.artic.edu/api/v1/artworks/search?fields=id,title,image_id,artist_title&q=";
 const getRandomApiUrl =
   "https://api.artic.edu/api/v1/artworks/search?fields=id,title,image_id,artist_title&page=";
+const searchByArtistApiUrl =
+  "https://api.artic.edu/api/v1/artworks/search?fields=id,title,image_id,artist_title,color&query[term][artist_title]=";
 
 async function searchByHue(hue) {
   const response = await fetch(searchByHueApiUrl + hue);
+
+  if (!response.ok) {
+    console.error("chicago api not okay");
+    return {};
+  }
+
+  const data = await response.json();
+  console.log(data);
+  if (!data.data.length) {
+    return null;
+  }
+  console.log(data[0]);
+  const artwork = createArtworkObj(data.data[0]);
+
+  return artwork;
+}
+
+async function searchByArtist(artist) {
+  const response = await fetch(searchByArtistApiUrl + artist);
 
   if (!response.ok) {
     console.error("chicago api not okay");
