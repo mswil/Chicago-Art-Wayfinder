@@ -4,10 +4,8 @@ const mainEl = document.querySelector("main");
 const searchWikiAPIUrl =
   "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=";
 
-const getWikiPageAPIUrl =
-  "https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&formatversion=2&origin=*&page=";
-const getWikiPageSummaryAPIUrl =
-  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&origin=*&pageids=";
+const getWikiPageAPIUrl = "https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&formatversion=2&origin=*&page="
+const getWikiPageSummaryAPIUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro&explaintext&redirects=1&origin=*&pageids="
 
 /* findWikiPage:
 Search for possible pages. 
@@ -15,7 +13,13 @@ Look through each page and see if it mentions the artist.
 Return html of page summary that matches the art's name and mentions the artist. 
 *** artName and artist must be strings returned from the chicago API ***   */
 const findWikiPage = async function (artName, artist) {
-  const response = await fetch(searchWikiAPIUrl + artName);
+
+    //if there is no artist, don't grab wikipage. Don't want dissociative data
+    if (!artist) {
+        return "No Wikipedia information available";
+    }
+    
+    const response = await fetch(searchWikiAPIUrl + artName);
 
   if (!response.ok) {
     console.error("wiki query not okay", response);

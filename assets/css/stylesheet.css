@@ -43,8 +43,8 @@
   /* mobile height 270 */
 }
 
-img {
-  object-fit: contain;
+.card.small .card-image {
+    max-height: 100%;
 }
 
 .input-field {
@@ -54,12 +54,3 @@ img {
 .sidenav-trigger {
   margin-left: 15px;
 }
-
-.card-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin: auto;
-  width: 50%;
-}
-

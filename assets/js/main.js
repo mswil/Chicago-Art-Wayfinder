@@ -15,10 +15,12 @@ $(document).ready(function () {
   );
 
   $(".modal").modal({
+    
+     $('.materialboxed').materialbox();
     onCloseEnd: function () {
       $("#fav-btn").off("click");
-      $('.materialboxed').materialbox();
-    },
+      clearModal();
+    }
   });
 });
 
@@ -30,9 +32,10 @@ $("#color-btn").on("click", function () {
 
   searchByHue(hue).then(function (artwork) {
     if (!artwork) {
-      //toast
+      //Maybe toast to alert user
     } else {
       showModal(artwork);
+      
     }
   });
 });
@@ -76,8 +79,9 @@ const showModal = function (artwork) {
 
   const modal = $("#modal");
   modal.find("h4").text(artwork.title);
-  modal.find("span").text(artwork.artist);
+  modal.find("span").text(artwork.artist || "Artist Unknown");
   modal.find("img").addClass("materialboxed").attr("src", artwork.imageUrl);
+
 
   findWikiPage(artwork.title, artwork.artist).then(function (summary) {
     modal.find("p").text(summary);
@@ -95,6 +99,17 @@ const showModal = function (artwork) {
 
   $(".modal").modal("open");
 };
+
+const clearModal = function () {
+  const modal = $("#modal");
+  modal.find("h4").text("");
+  modal.find("span").text("");
+  modal.find("img").attr("src", "https://icon-library.com/images/no-image-available-icon/no-image-available-icon-6.jpg");
+  modal.find("p").text("Loading...");
+
+}
+
+
 
 const hexToHue = function (hex) {
   const red = parseInt("0x" + hex.slice(1, 3));
