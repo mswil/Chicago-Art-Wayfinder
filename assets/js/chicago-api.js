@@ -47,6 +47,7 @@ createArtworkObj = function (data) {
         artist: data.artist_title,
         imageUrl: "https://www.artic.edu/iiif/2/" + data.image_id + "/full/843,/0/default.jpg",
     }
+    
     console.log(artwork)
     return artwork;
 };

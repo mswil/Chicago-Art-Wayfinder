@@ -49,7 +49,7 @@ const showModal = function (artwork) {
 
   const modal = $("#modal");
   modal.find("h4").text(artwork.title);
-  modal.find("span").text(artwork.artist);
+  modal.find("span").text(artwork.artist || "Artist Unknown");
   modal.find("img").attr("src", artwork.imageUrl);
 
   findWikiPage(artwork.title, artwork.artist).then(function (summary) {
