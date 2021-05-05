@@ -13,7 +13,7 @@
   <!-- Materialize -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/stylesheet.css">
 </head>
 
 <body>
@@ -84,9 +84,23 @@
         <div class="collapsible-body">
           <div class="input-field">
             <input placeholder="#9b1dc9" id="color" type="color" class="validate">
-
+            <div>
             <button id="color-btn" class="btn waves-effect waves-purple" type="button" name="color">
               Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <div class="collapsible-header waves-effect waves-purple">
+          <i class="material-icons">casino</i>Random
+        </div>
+        <div class="collapsible-body">
+          <div class="input-field">
+            <button id="random-btn" class="btn waves-effect waves-purple" type="button" name="random">Submit
               <i class="material-icons right">send</i>
             </button>
           </div>
@@ -160,7 +174,7 @@
   <!-- Chicago Art Institute -->
   <script src="./assets/js/chicago-api.js"></script>
   <!-- Main page logic -->
-  <script src="./assets/js/index.js"></script>
+  <script src="./assets/js/main.js"></script>
 
 </body>
 

@@ -1,18 +1,17 @@
-
 $(".dropdown-trigger").dropdown({
   coverTrigger: false,
   constrainWidth: false,
-  closeOnClick: false
+  closeOnClick: false,
 });
-  
+
 $(document).ready(function () {
-  $('.collapsible').collapsible();
+  $(".collapsible").collapsible();
   $(".sidenav").sidenav();
   $(".carousel").carousel();
-  $('.modal').modal({
-    onCloseEnd: function() {
+  $(".modal").modal({
+    onCloseEnd: function () {
       $("#fav-btn").off("click");
-    }
+    },
   });
 });
 
@@ -23,22 +22,29 @@ $("#color-btn").on("click", function () {
   searchByHue(hue).then(function (artwork) {
     if (!artwork) {
       //toast
-    }
-    else {
+    } else {
       showModal(artwork);
     }
   });
 });
 
 $("#keyword-btn").on("click", function () {
-
   const keyword = $("#keyword").val();
 
   searchByKeyword(keyword).then(function (artwork) {
     if (!artwork) {
       //toast
+    } else {
+      showModal(artwork);
     }
-    else {
+  });
+});
+
+$("#random-btn").on("click", function () {
+  getRandom().then(function (artwork) {
+    if (!artwork) {
+      //toast
+    } else {
       showModal(artwork);
     }
   });
@@ -56,11 +62,9 @@ const showModal = function (artwork) {
     modal.find("p").text(summary);
   });
 
-  
   if (isFavorited(artwork)) {
     modal.find("#fav-btn").text("Unfavorite");
-  }
-  else {
+  } else {
     modal.find("#fav-btn").text("Favorite");
   }
 
@@ -68,11 +72,10 @@ const showModal = function (artwork) {
     toggleFavorite(artwork);
   });
 
-  $('.modal').modal("open");
+  $(".modal").modal("open");
 };
 
 const hexToHue = function (hex) {
-
   const red = parseInt("0x" + hex.slice(1, 3));
   const green = parseInt("0x" + hex.slice(3, 5));
   const blue = parseInt("0x" + hex.slice(5, 7));
@@ -80,12 +83,18 @@ const hexToHue = function (hex) {
   const hsl = rgbToHsl(red, green, blue);
 
   return Math.floor(hsl.h);
-
-}
+};
 
 /*from https://www.w3schools.com/lib/w3color.js */
 function rgbToHsl(r, g, b) {
-  var min, max, i, l, s, maxcolor, h, rgb = [];
+  var min,
+    max,
+    i,
+    l,
+    s,
+    maxcolor,
+    h,
+    rgb = [];
   rgb[0] = r / 255;
   rgb[1] = g / 255;
   rgb[2] = b / 255;
@@ -93,8 +102,13 @@ function rgbToHsl(r, g, b) {
   max = rgb[0];
   maxcolor = 0;
   for (i = 0; i < rgb.length - 1; i++) {
-    if (rgb[i + 1] <= min) { min = rgb[i + 1]; }
-    if (rgb[i + 1] >= max) { max = rgb[i + 1]; maxcolor = i + 1; }
+    if (rgb[i + 1] <= min) {
+      min = rgb[i + 1];
+    }
+    if (rgb[i + 1] >= max) {
+      max = rgb[i + 1];
+      maxcolor = i + 1;
+    }
   }
   if (maxcolor == 0) {
     h = (rgb[1] - rgb[2]) / (max - min);
@@ -105,9 +119,13 @@ function rgbToHsl(r, g, b) {
   if (maxcolor == 2) {
     h = 4 + (rgb[0] - rgb[1]) / (max - min);
   }
-  if (isNaN(h)) { h = 0; }
+  if (isNaN(h)) {
+    h = 0;
+  }
   h = h * 60;
-  if (h < 0) { h = h + 360; }
+  if (h < 0) {
+    h = h + 360;
+  }
   l = (min + max) / 2;
   if (min == max) {
     s = 0;
@@ -123,4 +141,3 @@ function rgbToHsl(r, g, b) {
 }
 
 displayFavorites();
-
