@@ -1,4 +1,56 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.sidenav-trigger {
+  position: absolute;
+  top: 0.75rem;
+}
+
+.sidenav-trigger i {
+  font-size: 3rem;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+}
+
+#modal-header {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#modal-header h4 {
+  margin: 10px;
+  color: white;
+}
+
+#modal-text-area {
+  text-align: center;
+}
+
+#fav-btn {
+  margin: 10px;  
+}
+
+.modal-img img {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 12px;
+  /* mobile height 270 */
+}
+
+.card.small .card-image {
+    max-height: 100%;
+}
+
+.input-field {
+  margin: 0 20px;
+}
+
+.sidenav-trigger {
+  margin-left: 15px;
 }
