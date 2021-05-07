@@ -3,6 +3,19 @@
   padding: 0;
 }
 
+#body {
+  background-color: lightgray;
+}
+
+@-webkit-keyframes MOVE-BG {
+  from {
+      background-position: 0% 0%
+  }
+  to { 
+      background-position: 187% 0%
+  }
+}
+
 #art-institute-link {
   margin-right: 20px;
 }
@@ -22,6 +35,22 @@
 				 1px -1px 0 #000,
 				-1px -1px 0 #000;
 }
+
+/*#hero-img-one {
+    height: 400px;
+    background-image: url("https://www.artic.edu/iiif/2/bc30321e-1e8b-6ccb-e3da-01b01fe598e1/full/843,/0/default.jpg");
+    background-size: 110% 110%;
+    background-position: center center;
+    animation: shrink 5s infinite alternate;
+  }
+  @keyframes shrink {
+    0% {
+      background-size: 110% 110%;
+    }
+    100% {
+      background-size: 100% 100%;
+    }
+  }*/
 
 #hero-img-one {
   background-image: url("https://www.artic.edu/iiif/2/bc30321e-1e8b-6ccb-e3da-01b01fe598e1/full/843,/0/default.jpg");
@@ -100,13 +129,13 @@ img {
 }
 
 .title h4 {
-  color: lightgray;
+  color: darkgray;
   text-align: center;
   text-decoration: underline;
 }
 
 #fav-div {
-  border-top: 2px solid black;
+  border-top: 2px solid darkgray;
 }
 
 .card-img {
@@ -119,7 +148,7 @@ img {
 
 .card {
   cursor: pointer;
-  background-image: linear-gradient(#7b1fa2, #ba68c8);
+  background-image: linear-gradient(#ba68c8, #f3e5f5);
   box-shadow: 5px 10px 10px;
 }
 
