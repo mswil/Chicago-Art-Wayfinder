@@ -12,6 +12,7 @@ $(document).ready(function () {
   $(".modal").modal({    
     onCloseEnd: function () {          
       $("#fav-btn").off("click");   
+      clearModal();
     },
   });
 });
