@@ -7,11 +7,11 @@ $(".dropdown-trigger").dropdown({
 $(document).ready(function () {
   $(".collapsible").collapsible();
   $(".sidenav").sidenav();
-  $(".carousel").carousel();
-  $(".modal").modal({
-    onCloseEnd: function () {      
-      $("#fav-btn").off("click");
-      $(".materialboxed").materialbox();
+  $('.slider').slider({indicators: false});
+  $(".materialboxed").materialbox();  
+  $(".modal").modal({    
+    onCloseEnd: function () {          
+      $("#fav-btn").off("click");   
     },
   });
 });
@@ -86,6 +86,7 @@ const showModal = function (artwork) {
   });
 
   $(".modal").modal("open");
+  $(".materialboxed").materialbox(); 
 };
 
 const clearModal = function () {
