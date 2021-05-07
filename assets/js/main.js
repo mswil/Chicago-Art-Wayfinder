@@ -7,11 +7,11 @@ $(".dropdown-trigger").dropdown({
 $(document).ready(function () {
   $(".collapsible").collapsible();
   $(".sidenav").sidenav();
-  $('.slider').slider({indicators: false});
-  $(".materialboxed").materialbox();  
-  $(".modal").modal({    
-    onCloseEnd: function () {          
-      $("#fav-btn").off("click");   
+  $('.slider').slider({ indicators: false });
+  $(".materialboxed").materialbox();
+  $(".modal").modal({
+    onCloseEnd: function () {
+      $("#fav-btn").off("click");
       clearModal();
     },
   });
@@ -19,45 +19,64 @@ $(document).ready(function () {
 
 $("#color-btn").on("click", function () {
   const rgb = $("#color").val();
-  const hue = hexToHue(rgb);
 
-  searchByHue(hue).then(function (artwork) {
-    if (!artwork) {
-      //Maybe toast to alert user
-    } else {
-      showModal(artwork);
-    }
-  });
+  if (!rgb) {
+    M.toast({ html: 'Please select a color' });
+  }
+  else {
+    const hue = hexToHue(rgb);
+    searchByHue(hue).then(function (artwork) {
+      if (!artwork) {
+        M.toast({ html: 'No matching results' });
+      }
+      else {
+        showModal(artwork);
+      }
+    });
+  }
+
 });
 
 $("#artist-btn").on("click", function () {
   const artist = $("#artist").val().toLowerCase();
 
-  searchByArtist(artist).then(function (artwork) {
-    if (!artwork) {
-      //toast
-    } else {
-      showModal(artwork);
-    }
-  });
+  if (!artist) {
+    M.toast({ html: 'Please enter an artist\'s name' });
+  }
+  else {
+    searchByArtist(artist).then(function (artwork) {
+      if (!artwork) {
+        M.toast({ html: 'No matching results' });
+      } else {
+        showModal(artwork);
+      }
+    });
+  }
+
 });
 
 $("#keyword-btn").on("click", function () {
   const keyword = $("#keyword").val();
 
-  searchByKeyword(keyword).then(function (artwork) {
-    if (!artwork) {
-      //toast
-    } else {
-      showModal(artwork);
-    }
-  });
+  if (!keyword) {
+    M.toast({ html: 'Please enter keyword' });
+  }
+  else {
+    searchByKeyword(keyword).then(function (artwork) {
+      if (!artwork) {
+        M.toast({ html: 'No matching results' });
+      } else {
+        showModal(artwork);
+      }
+    });
+  }
+
 });
 
 $("#random-btn").on("click", function () {
   getRandom().then(function (artwork) {
     if (!artwork) {
-      //toast
+      M.toast({ html: 'There was a problem. Try again' });
     } else {
       showModal(artwork);
     }
@@ -88,7 +107,7 @@ const showModal = function (artwork) {
   });
 
   $(".modal").modal("open");
-  $(".materialboxed").materialbox(); 
+  $(".materialboxed").materialbox();
 };
 
 const clearModal = function () {
