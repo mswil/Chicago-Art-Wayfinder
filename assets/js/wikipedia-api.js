@@ -1,28 +1,33 @@
-const mainEl = document.querySelector("main");
 
 // wikipedia Api call
 const searchWikiAPIUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=";
-
-const getWikiPageAPIUrl = "https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&formatversion=2&origin=*&page="
+// endpoint for page summary and page url
 const getWikiPageSummaryAPIUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/"
 
 /* findWikiPage:
 Search for possible pages. 
 Look through each page and see if it mentions the artist. 
-Return html of page summary that matches the art's name and mentions the artist. 
-*** artName and artist must be strings returned from the chicago API ***   */
+Return html of page summary that matches the art's name and mentions the artist. */
+
+/*   *** artName and artist must be strings returned from the chicago API ***   */
 const findWikiPage = async function (artName, artist) {
+
+    let wikiPageInfo = {
+        summary: "No information available",
+        url: ""
+    };
 
     //if there is no artist, don't grab wikipage. Don't want dissociative data
     if (!artist) {
-        return "No Wikipedia information available";
+        console.warn("no artist");
+        return wikiPageInfo;
     }
 
     const response = await fetch(searchWikiAPIUrl + artName);
-
     if (!response.ok) {
-        console.error("wiki query not okay", response);
-        return "";
+        console.error("Wikipedia API query not okay", response);
+        wikiPageInfo.summary = "Problem connecting to Wikipedia. Try again later";
+        return wikiPageInfo;
     }
 
     const data = await response.json();
@@ -31,47 +36,46 @@ const findWikiPage = async function (artName, artist) {
     const results = data.query.search;
 
     for (let result of results) {
-        const wikiPage = await getWikiPage(result.title);
+        
+        //returns object contiaining: summary, url, and isMatch
+        wikiPageInfo = await getWikiPageInfo(result.title, artist);
 
-        //check to see if the artist is mentioned anywhere on the page
-        if (wikiPage.toLowerCase().includes(artist.toLowerCase())) {
-            //get the summary of the page
-            const wikiPageInfo = await getWikiPageInfo(result.title);
-
-            return wikiPageInfo;
+        if (wikiPageInfo.isMatch) {
+            break;
         }
     }
 
-    console.warn("no art & artist match");
-    return "No Wikipedia information available";
-};
-
-/* gets a wikipedia page by the page's name returns its html */
-const getWikiPage = async function (pageName) {
-    const response = await fetch(getWikiPageAPIUrl + pageName);
-
-    if (!response.ok) {
-        console.error("no wiki page", response);
-        return "";
+    if (!wikiPageInfo.isMatch) {
+        console.warn("no art & artist match");
     }
 
-    const data = await response.json();
-    return data.parse.text;
+    return wikiPageInfo;
 };
 
-const getWikiPageInfo = async function (pageName) {
+const getWikiPageInfo = async function (pageName, artist) {
+
+    const wikiInfo = {};
 
     const response = await fetch(getWikiPageSummaryAPIUrl + pageName);
-
     if (!response.ok) {
-        console.error("no wiki page", response);
-        return "";
+        console.error("Wikipedia REST API not okay", response);
+        wikiInfo.summary = "Problem connecting to Wikipedia. Try again later";
+        return wikiInfo;
     }
 
     const data = await response.json();
-    const wikiInfo = {
-        summary: data.extract,
-        url: data.content_urls.desktop.page
-    };
+
+    //check to see if this is the page we want
+    if (data.extract.toLowerCase().includes(artist.toLowerCase())) {
+        wikiInfo.summary = data.extract;
+        wikiInfo.url = data.content_urls.desktop.page;
+        wikiInfo.isMatch = true;
+    }
+    else {
+        wikiInfo.summary = "No information available";
+        wikiInfo.url = "";
+        wikiInfo.isMatch = false;
+    }
+
     return wikiInfo;
 };

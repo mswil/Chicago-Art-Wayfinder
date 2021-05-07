@@ -73,8 +73,8 @@ const showModal = function (artwork) {
   modal.find("img").addClass("materialboxed").attr("src", artwork.imageUrl);
 
   findWikiPage(artwork.title, artwork.artist).then(function (wikiInfo) {
-    modal.find("p").text(wikiInfo.summary || wikiInfo);
-    modal.find("#wiki-link").text(wikiInfo.url || "").attr("href", wikiInfo.url || "");
+    modal.find("p").text(wikiInfo.summary);
+    modal.find("#wiki-link").text(wikiInfo.url).attr("href", wikiInfo.url);
   });
 
   if (isFavorited(artwork)) {
@@ -95,10 +95,7 @@ const clearModal = function () {
   const modal = $("#modal");
   modal.find("h4").text("");
   modal.find("span").text("");
-  modal
-    .find("img")
-    .attr(
-      "src",
+  modal.find("img").attr("src",
       "https://icon-library.com/images/no-image-available-icon/no-image-available-icon-6.jpg"
     );
   modal.find("p").text("Loading...");
