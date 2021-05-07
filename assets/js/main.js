@@ -5,7 +5,11 @@ $(".dropdown-trigger").dropdown({
 });
 
 $(document).ready(function () {
-  $(".collapsible").collapsible();
+  $(".collapsible").collapsible({
+    onOpenEnd: function () {
+      $("input").focus();
+    }
+  });
   $(".sidenav").sidenav();
   $('.slider').slider({ indicators: false });
   $(".materialboxed").materialbox();
