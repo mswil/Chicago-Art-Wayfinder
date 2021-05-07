@@ -7,17 +7,11 @@ $(".dropdown-trigger").dropdown({
 $(document).ready(function () {
   $(".collapsible").collapsible();
   $(".sidenav").sidenav();
-  $(".carousel")
-    .carousel
-    //{fullWidth: true},
-    //{noWrap: true}
-    ();
-
+  $(".carousel").carousel();
   $(".modal").modal({
-    onCloseEnd: function () {
-      $(".materialboxed").materialbox();
+    onCloseEnd: function () {      
       $("#fav-btn").off("click");
-      clearModal();
+      $(".materialboxed").materialbox();
     },
   });
 });
