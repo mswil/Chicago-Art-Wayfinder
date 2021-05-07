@@ -20,6 +20,20 @@
   margin-right: 20px;
 }
 
+.caption{
+  margin: 1px;
+  padding: 15px;
+  background-color: #7b1fa2;
+  border-radius: 10px;
+  max-width: fit-content;
+}
+@media only screen and (min-width: 1440px) {
+  .slider{
+    width: 80% !important;
+    margin: auto;
+  }
+  
+}
 .caption h3 {
   color: lightgray;
 	text-shadow: -1px 1px 0 #000,
@@ -53,27 +67,35 @@
   }*/
 
 #hero-img-one {
-  background-image: url("https://www.artic.edu/iiif/2/bc30321e-1e8b-6ccb-e3da-01b01fe598e1/full/843,/0/default.jpg");
+  background-image: url("https://www.artic.edu/iiif/2/bc30321e-1e8b-6ccb-e3da-01b01fe598e1/full/1686,/0/default.jpg");
   background-position: center;
-  background-size: cover;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-color: lightgray;
 }
 
 #hero-img-two {
-  background-image: url("https://www.artic.edu/iiif/2/7690dd6e-05ed-773c-a80e-e7cc4eb879cc/full/843,/0/default.jpg");
+  background-image: url("https://www.artic.edu/iiif/2/7690dd6e-05ed-773c-a80e-e7cc4eb879cc/full/1686,/0/default.jpg");
   background-position: center;
-  background-size: cover;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-color: lightgray;
 }
 
 #hero-img-three {
-  background-image: url("https://www.artic.edu/iiif/2/9a9737e3-c296-a2b5-4d76-d88f50a61ff8/full/843,/0/default.jpg");
+  background-image: url("https://www.artic.edu/iiif/2/9a9737e3-c296-a2b5-4d76-d88f50a61ff8/full/1686,/0/default.jpg");
   background-position: center;
-  background-size: cover;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-color: lightgray;
 }
 
 #hero-img-four {
-  background-image: url("https://www.artic.edu/iiif/2/173ec65a-bc7e-067c-fed1-1677bf5f26a9/full/843,/0/default.jpg");
+  background-image: url("https://www.artic.edu/iiif/2/173ec65a-bc7e-067c-fed1-1677bf5f26a9/full/1686,/0/default.jpg");
   background-position: center;
-  background-size: cover;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-color: lightgray;
 }
 
 .sidenav-trigger {
@@ -128,8 +150,12 @@ img {
   margin-left: 15px;
 }
 
+.title {
+  border-radius: 10px;
+  background-color: #7b1fa2;
+}
 .title h4 {
-  color: darkgray;
+  color: lightgray;
   text-align: center;
   text-decoration: underline;
 }
@@ -148,8 +174,9 @@ img {
 
 .card {
   cursor: pointer;
-  background-image: linear-gradient(#ba68c8, #f3e5f5);
+  background-image: linear-gradient(#7b1fa2, lightgray);
   box-shadow: 5px 10px 10px;
+  border-radius: 5px;
 }
 
 .card:hover {
