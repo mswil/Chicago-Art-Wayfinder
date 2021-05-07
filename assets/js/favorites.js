@@ -25,7 +25,7 @@ const displayFavorites = function () {
     $("#favorites").empty();
 
     if (favorites.length) {
-        $("#favorites").append("<div class='row title'><h4>Favorites:</h4></div>");
+        $("#favorites").append("<div class='row title'><h4>Favorites</h4></div>");
         $("#favorites").append("<div class='row content'></div>");
         
         const row = $("#favorites").find(".content");

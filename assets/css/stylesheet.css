@@ -3,6 +3,50 @@
   padding: 0;
 }
 
+#art-institute-link {
+  margin-right: 20px;
+}
+
+.caption h3 {
+  color: lightgray;
+	text-shadow: -1px 1px 0 #000,
+				  1px 1px 0 #000,
+				 1px -1px 0 #000,
+				-1px -1px 0 #000;
+}
+
+.caption h5 {
+  color: lightgray;
+	text-shadow: -1px 1px 0 #000,
+				  1px 1px 0 #000,
+				 1px -1px 0 #000,
+				-1px -1px 0 #000;
+}
+
+#hero-img-one {
+  background-image: url("https://www.artic.edu/iiif/2/bc30321e-1e8b-6ccb-e3da-01b01fe598e1/full/843,/0/default.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+#hero-img-two {
+  background-image: url("https://www.artic.edu/iiif/2/7690dd6e-05ed-773c-a80e-e7cc4eb879cc/full/843,/0/default.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+#hero-img-three {
+  background-image: url("https://www.artic.edu/iiif/2/9a9737e3-c296-a2b5-4d76-d88f50a61ff8/full/843,/0/default.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+#hero-img-four {
+  background-image: url("https://www.artic.edu/iiif/2/173ec65a-bc7e-067c-fed1-1677bf5f26a9/full/843,/0/default.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
 .sidenav-trigger {
   position: absolute;
   top: 0.75rem;
@@ -25,7 +69,7 @@
 
 #modal-header h4 {
   margin: 10px;
-  color: white;
+  color: lightgray;
 }
 
 #modal-text-area {
@@ -55,6 +99,16 @@ img {
   margin-left: 15px;
 }
 
+.title h4 {
+  color: lightgray;
+  text-align: center;
+  text-decoration: underline;
+}
+
+#fav-div {
+  border-top: 2px solid black;
+}
+
 .card-img {
   display: block;
   margin-left: auto;
@@ -63,3 +117,12 @@ img {
   width: 50%;
 }
 
+.card {
+  cursor: pointer;
+  background-image: linear-gradient(#7b1fa2, #ba68c8);
+  box-shadow: 5px 10px 10px;
+}
+
+.card:hover {
+  box-shadow: 3px 5px 5px;
+}

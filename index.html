@@ -1,64 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Art Wayfinder</title>
 
-    <!-- font -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!-- Materialize -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Wayfinder</title>
 
-    <link rel="stylesheet" href="./assets/css/stylesheet.css" />
-  </head>
+  <!-- font -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!-- Materialize -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="./assets/css/stylesheet.css">
+</head>
 
-  <body>
-    <nav class="purple darken-2">
-      <div class="nav-wrapper container">
-        <!-- Art Wayfinder -->
-        <a href="index.html" class="brand-logo"
-          ><i class="material-icons">palette</i>Art Wayfinder</a
-        >
-        <!-- Nav Menu-->
-        <ul class="right hide-on-med-and-down">
-          <li>
-            <a href="https://www.artic.edu/" target="_blank"
-              >Art Institvte Chicago</a
-            >
-          </li>
-        </ul>
-      </div>
-    </nav>
+<body class="purple lighten-1">
+  <nav class="purple darken-2">    
+      <!-- Art Wayfinder -->
+      <a href="index.html" class="center hoverable brand-logo"><i class="material-icons">palette</i>Art Wayfinder</a>
+      <!-- Nav Menu-->
+      <a id="art-institute-link" class="right hoverable hide-on-med-and-down" href="https://www.artic.edu/" target="_blank">Art Institvte Chicago</a>    
+  </nav>
 
-    <!-- Nav Sidebar (CANNOT BE IN NAV)-->
-    <ul id="slide-out" class="sidenav">
-      <div class="user-view">
-        <div class="background">
-          <img
-            src="https://www.artic.edu/iiif/2/3c27b499-af56-f0d5-93b5-a7f2f1ad5813/full/843,/0/default.jpg"
-          />
+  <!-- Hero Section -->
+  <div class="slider">
+    <ul class="slides">
+      <li id="hero-img-one">
+        <!--<img class="materialboxed hero-img" src="https://www.artic.edu/iiif/2/bc30321e-1e8b-6ccb-e3da-01b01fe598e1/full/843,/0/default.jpg">-->
+        <div class="caption center-align">
+          <h3>Welcome to Art Wayfinder!</h3>
+          <h5 class="light grey-text text-lighten-3">More Art for More People!</h5>
         </div>
-        <a href="index.html"
-          ><i class="medium material-icons white-text">palette</i></a
-        >
-        <h2 class="purple-text text-darken-3">Art Wayfinder</h2>
-        <p class="white-text">Find art from the</p>
-        <a href="https://www.artic.edu/" target="_blank"
-          ><span class="white-text">Art Institvte of Chicago</span></a
-        >
+      </li>
+      <li id="hero-img-two">
+        <!--<img class="materialboxed hero-img" src="https://www.artic.edu/iiif/2/7690dd6e-05ed-773c-a80e-e7cc4eb879cc/full/843,/0/default.jpg">-->
+        <div class="caption left-align">
+          <h3>Search and Discover Artwork</h3>
+          <h5 class="light grey-text text-lighten-3">from the Art Institute of Chicago</h5>
+        </div>
+      </li>
+      <li id="hero-img-three">
+        <!--<img class="materialboxed hero-img" src="https://www.artic.edu/iiif/2/9a9737e3-c296-a2b5-4d76-d88f50a61ff8/full/843,/0/default.jpg">-->
+        <div class="caption right-align">
+          <h3>Search by:</h3>
+          <h5 class="light grey-text text-lighten-3">Name, Title, or Color!</h5>
+        </div>
+      </li>
+      <li id="hero-img-four">
+        <!--<img class="materialboxed hero-img" src="https://www.artic.edu/iiif/2/173ec65a-bc7e-067c-fed1-1677bf5f26a9/full/843,/0/default.jpg">-->
+        <div class="caption center-align">
+          <h3>Save Your Favorite Pieces</h3>
+          <h5 class="light grey-text text-lighten-3">listed below</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Nav Sidebar (CANNOT BE IN NAV)-->
+  <ul id="slide-out" class="sidenav">
+    <div class="user-view">
+      <div class="background">
+        <img src="https://www.artic.edu/iiif/2/3c27b499-af56-f0d5-93b5-a7f2f1ad5813/full/843,/0/default.jpg" />
       </div>
 
       <li><a class="subheader">Search for Art By</a></li>
@@ -186,7 +189,18 @@
       <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat"></a>
       </div>
+
+      <span class="grey-text text-darken-"></span>
+      <p>Loading...</p>
+      <a id="wiki-link" href=""></a>
     </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"></a>
+    </div>
+  </div>
+
+
+  <div id="fav-div">
 
     <main>
       <div id="carousel-div">
