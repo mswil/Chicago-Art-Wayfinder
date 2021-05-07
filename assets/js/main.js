@@ -8,7 +8,8 @@ $(document).ready(function () {
   $(".collapsible").collapsible();
   $(".sidenav").sidenav();
   $('.slider').slider({indicators: false});
-  $(".materialboxed").materialbox();  
+  $(".materialboxed").materialbox();
+  // $('.carousel').carousel({numVisible: 3});  
   $(".modal").modal({    
     onCloseEnd: function () {          
       $("#fav-btn").off("click");   

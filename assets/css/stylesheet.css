@@ -9,18 +9,14 @@
 
 .caption h3 {
   color: lightgray;
-	text-shadow: -1px 1px 0 #000,
-				  1px 1px 0 #000,
-				 1px -1px 0 #000,
-				-1px -1px 0 #000;
+  text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+    -1px -1px 0 #000;
 }
 
 .caption h5 {
   color: lightgray;
-	text-shadow: -1px 1px 0 #000,
-				  1px 1px 0 #000,
-				 1px -1px 0 #000,
-				-1px -1px 0 #000;
+  text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+    -1px -1px 0 #000;
 }
 
 #hero-img-one {
@@ -77,7 +73,7 @@
 }
 
 #fav-btn {
-  margin: 10px;  
+  margin: 10px;
 }
 
 .modal-img img {
@@ -125,4 +121,20 @@ img {
 
 .card:hover {
   box-shadow: 3px 5px 5px;
+}
+
+.background-svg {
+  background-image: url(../images/Art-Background.svg);
+  background-size: 10%;
+  background-attachment: fixed;
+  background-color: #ba7dc5;
+}
+
+.content-area {
+  width: 80%;
+  height: 100%;
+  left: 10%;
+  opacity: 90%;
+  background-color: white;
+  position: absolute;
 }
