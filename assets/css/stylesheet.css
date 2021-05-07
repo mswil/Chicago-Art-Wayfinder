@@ -79,6 +79,7 @@
 .sidenav-trigger {
   position: absolute;
   top: 0.75rem;
+  margin-left: 15px;
 }
 
 .sidenav-trigger i {
@@ -113,7 +114,6 @@
   width: 100%;
   height: 400px;
   margin-bottom: 12px;
-  /* mobile height 270 */
 }
 
 img {
@@ -124,19 +124,15 @@ img {
   margin: 0 20px;
 }
 
-.sidenav-trigger {
-  margin-left: 15px;
-}
-
 .title h4 {
   color: darkgray;
   text-align: center;
   text-decoration: underline;
 }
 
-#fav-div {
+/* #fav-div {
   border-top: 2px solid darkgray;
-}
+} */
 
 .card-img {
   display: block;
@@ -154,4 +150,18 @@ img {
 
 .card:hover {
   box-shadow: 3px 5px 5px;
+}
+
+/* medium */
+@media (max-width:992px) {
+    .modal-img img {
+        height: 300px;
+    }
+}
+
+/* small */
+@media (max-width: 600px) {
+    .modal-img img {
+        height: 220px;
+    }
 }

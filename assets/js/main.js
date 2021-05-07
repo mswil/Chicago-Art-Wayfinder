@@ -14,6 +14,9 @@ $(document).ready(function () {
   $('.slider').slider({ indicators: false });
   $(".materialboxed").materialbox();
   $(".modal").modal({
+    onOpenStart: function() {
+      $(this).scrollTop();
+    },
     onCloseEnd: function () {
       $("#fav-btn").off("click");
       clearModal();
