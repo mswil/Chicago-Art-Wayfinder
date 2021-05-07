@@ -71,8 +71,9 @@ const showModal = function (artwork) {
   modal.find("span").text(artwork.artist || "Artist Unknown");
   modal.find("img").addClass("materialboxed").attr("src", artwork.imageUrl);
 
-  findWikiPage(artwork.title, artwork.artist).then(function (summary) {
-    modal.find("p").text(summary);
+  findWikiPage(artwork.title, artwork.artist).then(function (wikiInfo) {
+    modal.find("p").text(wikiInfo.summary || wikiInfo);
+    modal.find("#wiki-link").text(wikiInfo.url || "").attr("href", wikiInfo.url || "");
   });
 
   if (isFavorited(artwork)) {
@@ -100,6 +101,8 @@ const clearModal = function () {
       "https://icon-library.com/images/no-image-available-icon/no-image-available-icon-6.jpg"
     );
   modal.find("p").text("Loading...");
+  modal.find("#wiki-link").text("").attr("href", "");
+
 };
 
 const hexToHue = function (hex) {
