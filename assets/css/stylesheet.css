@@ -7,14 +7,14 @@
   background-color: lightgray;
 }
 
-@-webkit-keyframes MOVE-BG {
+/* @keyframes MOVE-BG {
   from {
       background-position: 0% 0%
   }
   to { 
       background-position: 187% 0%
   }
-}
+} */
 
 #art-institute-link {
   margin-right: 20px;
